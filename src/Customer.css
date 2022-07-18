@@ -1,0 +1,106 @@
+* {
+    font-family: Rubik;
+
+}
+
+
+.feedback-heading {
+    color: #1E9ACE;
+}
+.customer-form {
+    margin-top: 100px;
+    font-size: 18px;
+    font-weight: 600px;
+    margin-left: 100px;
+}
+.customer-form-label{
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+.customer-input {
+    background-color: #F5F5F5;
+    height: 40px;
+    border-radius: 5px;
+    border-color: transparent;
+    width: 80%;
+}
+.customer-input:focus {
+    box-shadow: none !important;
+    border: 1px solid #1E9ACE;
+}
+.cust-submit {
+    background-color: #1E9ACE;
+    border-radius: 0%;
+    margin: 15px 0px 40px 0px;
+    border: none;
+    width: 110px;
+    height: 45px;
+    color: white;
+
+}
+.cust-submit:hover {
+    background-color: #F5F5F5;
+    color: black;
+    border: 2px solid #1E9ACE;
+}
+.cust-submit:active {
+    background-color: #1E9ACE;
+    border: 1px solid #1E9ACE;
+    box-shadow: none !important;
+}
+@font-face {
+    font-family: Rubik;
+    src: url(../src/components/Rubik-VariableFont_wght.ttf);
+}
+.cust-dropdown {
+  width: 200px;
+  border-color: transparent !important;
+}
+.customer-suggestion {
+  padding-bottom: 130px;
+  padding-top: 15px;
+}
+
+.star {
+  display: inline-block;  
+  cursor: pointer;
+  position: relative;
+  bottom: 20px;
+}
+
+.inactive, .active {
+  background: transparent;
+  user-select: none;
+}
+
+.inactive {
+  color: #f1f1e8;
+}
+
+.active {
+  color: gold;
+}
+.index {
+  font-size: smaller !important;
+  color: #1E9ACE;
+  background-color: #1E9ACE;
+}
+.main-page {
+  text-decoration: none;
+  color: #1E9ACE;
+  font-weight: bolder;
+  position: absolute;
+  top: 8px;
+  right: 50px;
+  font-size: 18px;
+}
+
+.dash-main {
+  text-decoration: none;
+  color: #1E9ACE;
+  font-weight: bolder;
+  position: absolute;
+  top: 8px;
+  left: 50px;
+  font-size: 18px;
+}

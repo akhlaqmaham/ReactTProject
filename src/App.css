@@ -1,5 +1,208 @@
-.App {
+* {
+  font-family: Rubik;
+}
+
+@font-face {
+  font-family: Rubik;
+  src: url(../src/components/Rubik-VariableFont_wght.ttf);
+}
+
+.log-head, .reg-head {
+  color: #1E9ACE;
+}
+
+.reg-mar {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.login, .registration {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.login label,  .registration label  {
+    font-size: 18px;
+    font-weight: 600px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.login input, .registration input {
+    background-color: #F5F5F5;
+    height: 40px;
+    border-radius: 5px;
+    border-color: transparent;
+    width: 40%;
+}
+
+.login input:focus {
+  box-shadow: none !important;
+    border: 1px solid #1E9ACE;
+}
+
+.registration input:focus {
+  box-shadow: none !important;
+    border: 1px solid #1E9ACE;
+}
+
+.login button,  .registration button {
+  background-color: #1E9ACE;
+  border-radius: 0%;
+  margin: 15px 0px 40px 0px;
+  border: none;
+  width: 110px;
+  height: 45px;
+  color: white;
+
+}
+
+.registration button:hover {
+  background-color: #F5F5F5;
+  color: black;
+  border: 2px solid #1E9ACE;
+}
+
+.login button:hover {
+  background-color: #F5F5F5;
+  color: black;
+  border: 2px solid #1E9ACE;
+}
+
+.registration button:active {
+  background-color: #1E9ACE;
+    border: 1px solid #1E9ACE;
+    box-shadow: none !important;
+}
+
+.login button:active {
+    background-color: #1E9ACE;
+    border: 1px solid #1E9ACE;
+    box-shadow: none !important;
+}
+.main{
+  background-image: url(./tri.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 820px;
+}
+html,body {
+  margin:0;
+  padding: 0;
+}
+
+.main-wrapper {
+  background-color: rgb(228, 228, 228);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 50px;
+  position: relative;
+  top: 150px;
+  border: none;
+  border-radius: 10px;
+  
+}
+.main-wrapper h1 {
+  color: #1E9ACE;
+}
+.mainb {
+  margin-top: 20px;
+  width: 500px;
+  height: 90px;
+  font-size: 23px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease 0s;
+  background-color: #1E9ACE;
+  color: #F5F5F5;
+  border: none;
+
+}
+.fa{
+  padding-right: 8px;
+  font-size: 30px;
+}
+
+.faus {
+  padding-right: 5px;
+  font-size: 20px;
+}
+.mainb:hover {
+  background-image: linear-gradient(to right, rgb(2, 120, 170), #F5F5F5);
+  color: black;
+}
+
+@media (max-width:1189px) {
+  .mainb {
+    width: 300px;
+  }
+}
+@media (max-width:1308px) {
+  .mainb {
+    width: 280px;
+  }
+}
+@media (max-width:604px) {
+  .mainb {
+    width: 220px;
+  }
+  .main-wrapper {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
+.tabl{
+  /* width: 100vw;
+  height: 100vh; */
+  font-size: 10.3px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.tab {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+.registration table , .transporter-wrapper table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 3px solid rgb(180, 180, 180);
+}
+
+.registration th, .transporter-wrapper th {
+  letter-spacing: 1px;
+  padding: 10px;
+  border: 1px solid rgb(173, 173, 173);
+  font-weight: bolder;
+  font-style: italic;
+}
+
+.registration td, .transporter-wrapper td {
+  letter-spacing: 1px;
+  padding: 10px;
+}
+
+.registration tbody td, .transporter-wrapper tbody td {
   text-align: center;
+}
+.registration tbody:nth-child(even), .transporter-wrapper tbody:nth-child(even) {
+  background-color: rgb(209, 207, 207);
+}
+
+.registration tbody:nth-child(odd), .transporter-wrapper tbody:nth-child(odd) {
+  background-color: white
 }
 
 .App-logo {
@@ -36,3 +239,68 @@
     transform: rotate(360deg);
   }
 }
+.dashboard{
+  width: 20%;
+  float: left;
+  background-color: rgb(81, 190, 233);
+  height:100vh;
+  position: fixed;
+  
+}
+#pvt{
+  background-color:rgb(125, 201, 245);
+}
+.slidebarinner{
+  margin: auto;
+  padding: 20px;
+  display:flex;
+  color: white;
+}
+.line{ 
+  /* div in center */
+  height: 1px;
+  background-color: white;
+ 
+  margin: auto;
+  width: 100%;
+  margin-top: 2px;
+  margin-bottom: 8px;
+  
+}
+.button{
+  background-color: rgb(81, 190, 233);
+  border: transparent;
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding-left: 20px;
+  font-size: 17px;
+
+}
+.button:hover {
+  background-color: white;
+  color: rgb(81, 190, 233);
+  border-radius: 4px;
+}
+.charts{
+  background-color: black;
+  margin-left:210px ;
+  margin-right: 10px;
+}
+#hello{
+  margin: auto;
+  width:100% ;
+  padding-top: 20px;
+}
+h3 {
+  color: white !important;
+}
+ 
+.ho {
+  text-decoration: none;
+  color: #F5F5F5;
+  font-weight: bolder;
+  position: absolute;
+  bottom: 14px;
+  font-size: 18px;
+}
+
