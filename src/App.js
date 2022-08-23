@@ -8,7 +8,10 @@ import Transporter from './components/Transporter';
 import Main from './components/Main';
 import Guard from './components/Guard';
 import Customer from './components/Customer'
-import Dispatch from './components/Dispatch'
+import Dispatch from './components/Dispatch';
+import Product from './components/product';
+import Customerdash from './components/customerdash';
+import Performance from './components/performance';
 
 
 function App() {
@@ -31,6 +34,12 @@ function App() {
           <Route path="/customer" element={<Customer />}>
           </Route>
           <Route path="/dispatch" element={<Dispatch />}>
+          </Route>
+          <Route path="/product" element={<Product />}>
+          </Route>
+          <Route path="/customerdash" element={<Customerdash />}>
+          </Route>
+          <Route path="/performance" element={<Performance/>}>
           </Route>
         </Routes>
       </Router>

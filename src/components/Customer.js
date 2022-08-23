@@ -1,10 +1,10 @@
 import '../App.css';
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col } from 'reactstrap';
-import StarRatingDemo from './StarRating';
 import { FaHome } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
+import '../Customer.css';
 
 
 export default function Customer() {
@@ -13,9 +13,7 @@ export default function Customer() {
   const [emailCustomer, setemailCustomer] = useState("");
   const [delivered_on_timeCustomer, setDelivered_on_timeCustomer] = useState("");
   const [quantity_per_reqCustomer, setQuantity_per_reqCustomer] = useState("");
-  const [product_conditionCustomer, setProduct_conditionCustomer] = useState("");
   const [suggestionCustomer, setSuggestionCustomer] = useState("");
-  const [ratingCustomer, setRatingCustomer] = useState("");
 
   const [customers, setCustomers] = useState([]);
 
@@ -25,9 +23,7 @@ export default function Customer() {
       email: emailCustomer,
       delivered_on_time: delivered_on_timeCustomer,
       quantity_per_req: quantity_per_reqCustomer,
-      product_condition: product_conditionCustomer,
       suggestion: suggestionCustomer,
-      rating: ratingCustomer,
     }).then(response => {
       console.log(response)
 
@@ -76,70 +72,33 @@ export default function Customer() {
               <Col className='customer-label'><label>Was the product delivered to you on time?</label></Col>
             </Row>
             <Row className='customer-input-row'>
-              <Col><Input className='item customer-input cust-dropdown' type="select" name="select" id="exampleSelect">
+              <Col><Input className='item customer-input cust-dropdown' type="select" name="select" id="exampleSelect" 
+              onChange={(e) => {
+                setDelivered_on_timeCustomer(e.target.value);
+              }}>
+                <option>Select</option>
                 <option>Yes</option>
                 <option>No</option>
-                onChange={(e) => {
-                  setDelivered_on_timeCustomer(e.target.value);
-                }}
               </Input>
               </Col>
             </Row>
             <Row className='customer-form-label'>
-              <Col className='customer-label'><label>Was the quantity of product as per requirement?</label></Col>
+              <Col className='customer-label'><label>Was the quantity of product as per requirement? </label></Col>
             </Row>
             <Row className='customer-input-row'>
-              <Col><Input className='item customer-input cust-dropdown' type="select" name="select" id="exampleSelect">
+              <Col><Input className='item customer-input cust-dropdown' type="select" name="select" id="exampleSelect" 
+              onChange={(e) => {
+                setQuantity_per_reqCustomer(e.target.value);
+              }}>
+                <option>Select</option>
                 <option>Yes</option>
                 <option>No</option>
-                onChange={(e) => {
-                  setQuantity_per_reqCustomer(e.target.value);
-                }}
               </Input>
               </Col>
             </Row>
 
-
           </FormGroup>
-          {/* <FormGroup className='form-group' id="cust-for" tag="fieldset">
-            <Row className='customer-form-label'>
-              <Col className='customer-label'><Label>The product delivered</Label></Col>
-            </Row>
-            <FormGroup check>
-              <Label check>
-                <Input type="radio" name="radio1" />{' '}
-                Complete
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="radio" name="radio1" />{' '}
-                Incomplete
-              </Label>
-            </FormGroup> */}
-
-          {/* </FormGroup> */}
-
-          <Row className='customer-form-label'>
-            <Col className='customer-label'><Label>The product delivered</Label></Col>
-          </Row>
-
-          {/* <FormGroup check>
-            <Label check>
-              <Input type="radio" name="radio1" />{' '}
-                Broken
-              </Label>
-          </FormGroup> */}
-          {/* <FormGroup check>
-            <Label check>
-              <Input type="radio" name="radio1" />{' '}
-                Unbroken
-                onChange={(e) => {
-                setProduct_conditionCustomer(e.target.value);
-              }}
-            </Label> */}
             <FormGroup>
-
             <Row className='customer-form-label'>
               <Col className='customer-label'><Label for="exampleText">Any suggestion?</Label></Col>
             </Row>
@@ -147,18 +106,8 @@ export default function Customer() {
              onChange={(e) => {
               setSuggestionCustomer(e.target.value);
           }} />
-            <Row className='customer-form-label'>
-              <Col className='customer-label'><label>Rate the Service</label></Col>
-            </Row>
-            <Row className='customer-form-label'>
-              <Col>
-                < StarRatingDemo />
-              </Col>
-            </Row>
-            <Button className='cust-submit' onClick={customers}>Submit</Button>
-
           </FormGroup>
-
+            <Button className='cust-submit' onClick={customer}>Submit</Button>
 
         </Form>
         {getCustomer()}

@@ -63,6 +63,56 @@ app.get('/dispatch', (req, res) => {
   )
 })
 
+app.get('/product', (req, res) => {
+  db.query(
+    "SELECT * FROM product",
+    (err, result) => {
+      if (err) {
+        res.send({ err: err });
+        console.log(err)
+      }
+      if (result) {
+        res.send(result);
+      } else {
+        res.send({ message: "no data found" });
+      }
+    }
+  )
+})
+
+app.get('/performance', (req, res) => {
+  db.query(
+    "SELECT * FROM performance",
+    (err, result) => {
+      if (err) {
+        res.send({ err: err });
+        console.log(err)
+      }
+      if (result) {
+        res.send(result);
+      } else {
+        res.send({ message: "no data found" });
+      }
+    }
+  )
+})
+
+app.get('/customerdash', (req, res) => {
+  db.query(
+    "SELECT * FROM customer",
+    (err, result) => {
+      if (err) {
+        res.send({ err: err });
+        console.log(err)
+      }
+      if (result) {
+        res.send(result);
+      } else {
+        res.send({ message: "no data found" });
+      }
+    }
+  )
+});
 
 app.get('/transporter', (req, res) => {
   db.query(
@@ -78,7 +128,7 @@ app.get('/transporter', (req, res) => {
       }
     }
   )
-})
+});
 
 
 app.post('/register', (req, res) => {
@@ -177,16 +227,13 @@ app.post('/customer', (req, res) => {
   console.log(delivered_on_time);
   const quantity_per_req = req.body.quantity_per_req;
   console.log(quantity_per_req);
-  const product_condition = req.body.product_condition;
-  console.log(product_condition);
   const suggestion = req.body.suggestion;
   console.log(suggestion);
-  const rating = req.body.rating;
-  console.log(rating);
+
 
   db.query(
-    "INSERT INTO customer (customername, email, delivered_on_time, quantity_per_req, product_confition, suggestion, rating) VALUES (?,?,?,?,?,?,?)",
-    [customername, email, delivered_on_time, quantity_per_req, product_condition, suggestion, rating],
+    "INSERT INTO customer (customername, email, delivered_on_time, quantity_per_req,  suggestion) VALUES (?,?,?,?,?)",
+    [customername, email, delivered_on_time, quantity_per_req, suggestion],
     (err, result) => {
       console.log(err);
     }

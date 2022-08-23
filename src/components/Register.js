@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 import './table.css';
-import { FaUser, FaLock, FaHome } from 'react-icons/fa';
-import { Link } from 'react-router-dom'
+import { FaUser, FaLock, FaHome, FaSearch } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 export default function Signup() {
@@ -11,10 +11,9 @@ export default function Signup() {
     const [passwordReg, setPasswordReg] = useState("");
     const [newusernameReg, setNewUsernameReg] = useState("");
     const [newpasswordReg, setNewPasswordReg] = useState("");
+    const [search, setSearch] = useState("");
 
     const [users, setUsers] = useState([]);
-
-
 
 
     const register = () => {
@@ -35,7 +34,7 @@ export default function Signup() {
     };
 
     const updateData = (s_id) => {
-        Axios.put("http://localhost:3001/update", { username: newusernameReg, password: newpasswordReg ,s_id: s_id }).then(
+        Axios.put("http://localhost:3001/update", { username: newusernameReg, password: newpasswordReg, s_id: s_id }).then(
             (response) => {
                 setUsers(
                     users.map((user) => {
@@ -54,13 +53,16 @@ export default function Signup() {
 
     const deleteData = (s_id) => {
         Axios.delete(`http://localhost:3001/delete/${s_id}`).then((response) => {
-          setUsers(
-            users.filter((user) => {
-              return user.s_id != s_id;
-            })
-          );
+            setUsers(
+                users.filter((user) => {
+                    return user.s_id != s_id;
+                })
+            );
         });
-      };
+    };
+
+    const countuser = users.length;
+    console.log(countuser)
 
 
 
@@ -84,10 +86,25 @@ export default function Signup() {
                     /> <br />
                     <button onClick={register}> Register</button>
                 </div>
-                {getData()}
                 <h1 className="reg-head" align="center">Users List</h1>
-                <div className='tab'>
-                    <table className="table table-striped" id="signup" border='1' align='center'>
+                <div className="flexsear">
+                    <div className="search">
+                        <input className="innav" type="text" placeholder="Search..." onChange={event => { setSearch(event.target.value) }} />
+                        <FaSearch />
+                    </div>
+                    <div className="excelfile">
+                        <ReactHTMLTableToExcel
+                            className="btn-excel"
+                            table="signup"
+                            filename="Products Excel File"
+                            sheet="Sheet"
+                            buttonText="Export to Excel"
+                        />
+                    </div>
+                </div>
+                {getData()}
+                <div className='tabl'>
+                    <table id="signup" border='1' align='center'>
                         <thead>
                             <tr>
                                 <th id='id'>ID</th>
@@ -95,7 +112,14 @@ export default function Signup() {
                                 <th id='pass'>PASSWORD</th>
                             </tr>
                         </thead>
-                        {users.map(user =>
+                        {users.filter((user) => {
+                            if (search == "") {
+                                return user
+
+                            } else if (user.username.toLowerCase().includes(search.toLowerCase())) {
+                                return user
+                            }
+                        }).map(user =>
                             <tbody id="content" align="center">
                                 <tr>
                                     <td>{user.s_id}</td>
@@ -105,6 +129,7 @@ export default function Signup() {
                                         <input
                                             type="text"
                                             placeholder="Edit Username"
+                                            className="editdel"
                                             onChange={(e) => {
                                                 setNewUsernameReg(e.target.value);
                                             }}
@@ -112,11 +137,13 @@ export default function Signup() {
                                         <input
                                             type="text"
                                             placeholder="Edit Password"
+                                            className="editdel"
                                             onChange={(e) => {
                                                 setNewPasswordReg(e.target.value);
                                             }}
                                         />
                                         <button
+                                            className="delbutton"
                                             onClick={() => {
                                                 updateData(user.s_id);
                                             }}
@@ -124,6 +151,7 @@ export default function Signup() {
                                             {" "}
                                             EDIT
                                             </button>
+                                        <span className="deled"></span>
                                         <button className="delbutton"
                                             onClick={() => {
                                                 deleteData(user.s_id);
@@ -136,15 +164,7 @@ export default function Signup() {
                             </tbody>
                         )}
                     </table>
-                    <ReactHTMLTableToExcel
-                    className="btn btn-info"
-                    table="signup"
-                    filename="Signup Excel File"
-                    sheet="Sheet"
-                    buttonText= "Export to Excel"
-                    />
                 </div>
-
             </div>
         </div>
     )
